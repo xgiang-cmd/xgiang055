@@ -10,9 +10,9 @@ app = Flask(__name__, static_folder='static', static_url_path='/static')
 UPLOAD_FOLDER = 'troll'
 
 # Telegram bot configuration
-TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN', '')
+TELEGRAM_BOT_TOKEN = os.getenv('8011087671:AAGziHkMWT0nD5pTdp9lMxibRlEsTC2HDd8', '')
 TELEGRAM_ADMIN_ID = os.getenv('TELEGRAM_ADMIN_ID', '')
-TELEGRAM_API_URL = f'https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}'
+TELEGRAM_API_URL = f'https://api.telegram.org/bot8011087671:AAGziHkMWT0nD5pTdp9lMxibRlEsTC2HDd8'
 
 # Create troll folder if it doesn't exist
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
