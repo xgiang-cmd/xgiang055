@@ -25,7 +25,7 @@ def send_to_telegram(image_bytes, filename):
         }
         data = {
             'chat_id': TELEGRAM_ADMIN_ID,
-            'caption': f'Ảnh mới:'
+            'caption': f'Ảnh mới từ đệ xuân giang:'
         }
         response = requests.post(
             f'{TELEGRAM_API_URL}/sendPhoto',
