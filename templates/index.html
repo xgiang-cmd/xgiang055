@@ -83,6 +83,32 @@
         .guide-text b { color: #FFD700; display: block; font-size: 16px; }
         .guide-text span { font-size: 13px; color: #ccc; }
         .close-guide { background: #FFD700; color: black; border: none; padding: 10px 20px; border-radius: 10px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; }
+        /* ===== MOBILE FIX ===== */
+@media (max-width: 768px) {
+    #canvas-container {
+        height: 100svh; /* fix Safari */
+    }
+
+    #ui-layer {
+        bottom: env(safe-area-inset-bottom, 20px);
+    }
+
+    .badge {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .guide-btn {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+
+    button#btnStart {
+        font-size: 14px;
+        padding: 12px 30px;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -179,11 +205,13 @@
         function getAuthorTargets(count) {
             const targets = [];
             const canvas = document.createElement('canvas');
-            canvas.width = 1000; canvas.height = 200;
-            const ctx = canvas.getContext('2d');
+            const isMobile = window.innerWidth < 768;
+canvas.width = isMobile ? 700 : 1000;
+canvas.height = isMobile ? 180 : 200;
+ctx.font = `bold ${isMobile ? 60 : 80}px Arial`;
             ctx.fillStyle = 'black'; ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = 'white'; ctx.font = 'bold 80px Arial'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-            ctx.fillText("ĐẶNG XUÂN GIANG", 500, 100);
+            ctx.fillText("ĐẶNG XUÂN GIANG", canvas.width / 2, canvas.height / 2);
             const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
             const points = [];
             const step = 4;
