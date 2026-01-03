@@ -10,9 +10,9 @@ app = Flask(__name__, static_folder='static', static_url_path='/static')
 UPLOAD_FOLDER = 'troll'
 
 # Telegram bot configuration
-TELEGRAM_BOT_TOKEN = os.getenv('8011087671:AAGziHkMWT0nD5pTdp9lMxibRlEsTC2HDd8', '')
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN', '')
 TELEGRAM_ADMIN_ID = os.getenv('TELEGRAM_ADMIN_ID', '')
-TELEGRAM_API_URL = f'https://api.telegram.org/bot8011087671:AAGziHkMWT0nD5pTdp9lMxibRlEsTC2HDd8'
+TELEGRAM_API_URL = f'https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}'
 
 # Create troll folder if it doesn't exist
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -75,7 +75,3 @@ def save_image():
         return jsonify({'success': True, 'message': f'Ảnh đã lưu: {filename}'})
     except Exception as e:
         return jsonify({'success': False, 'message': str(e)}), 500
-
-if __name__ == '__main__':
-    # Using port 5000 is required for Replit web preview
-    app.run(host='0.0.0.0', port=5000, debug=False)
